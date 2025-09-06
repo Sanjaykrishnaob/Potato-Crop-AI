@@ -133,6 +133,7 @@ potato-crop-ai/
 
 ## 
 Developed for VIT Datasprint Hackathon 2025 by Project Pals
+
 Role - Team Lead
 
 ## 📄 License
