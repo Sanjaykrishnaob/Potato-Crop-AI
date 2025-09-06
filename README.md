@@ -118,14 +118,6 @@ potato-crop-ai/
 ├── data/                   # Sample datasets
 └── config/                 # Configuration files
 ```
-
-## 🏆 Competitive Advantages
-1. **Real-time Processing**: Sub-5-minute analysis of new imagery
-2. **High Accuracy**: State-of-the-art ML models with >90% accuracy
-3. **Farmer-Centric Design**: Intuitive interface designed with farmer feedback
-4. **Cost Efficiency**: Average 25% reduction in input costs
-5. **Scalability**: Cloud-native architecture for enterprise deployment
-
 ## 📱 Mobile Features
 - Offline capability for field use
 - GPS integration for precise location tracking
@@ -139,8 +131,8 @@ potato-crop-ai/
 - Weather prediction integration
 - Marketplace integration for optimal selling times
 
-## 👥 Team
-Developed for VIT Hackathon 2025
+## 
+Developed for VIT Datasprint Hackathon 2025
 
 ## 📄 License
 MIT License - See LICENSE file for details
