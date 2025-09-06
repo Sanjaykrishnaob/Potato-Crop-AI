@@ -1,0 +1,57 @@
+{
+  "name": "potato-crop-dashboard",
+  "version": "1.0.0",
+  "description": "Interactive web dashboard for AI-powered potato crop management",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "@mui/icons-material": "^5.11.0",
+    "@mui/material": "^5.11.0",
+    "@mui/x-date-pickers": "^8.11.0",
+    "axios": "^1.3.0",
+    "chart.js": "^4.2.1",
+    "date-fns": "^2.30.0",
+    "leaflet": "^1.9.3",
+    "react": "^18.2.0",
+    "react-beautiful-dnd": "^13.1.1",
+    "react-chartjs-2": "^5.2.0",
+    "react-dom": "^18.2.0",
+    "react-grid-layout": "^1.3.4",
+    "react-leaflet": "^4.2.0",
+    "react-notifications-component": "^4.0.1",
+    "react-query": "^3.39.3",
+    "react-router-dom": "^6.8.0",
+    "react-scripts": "^5.0.1",
+    "recharts": "^2.5.0",
+    "rxjs": "^7.8.2",
+    "styled-components": "^5.3.6"
+  },
+  "devDependencies": {
+    "@types/leaflet": "^1.9.0"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

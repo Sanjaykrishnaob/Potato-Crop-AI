@@ -1,0 +1,146 @@
+{
+  "name": "potato-crop-ai-mcp",
+  "version": "1.0.0",
+  "description": "Model Context Protocol server for Potato Crop AI system - automated ML pipeline triggering and real-time updates",
+  "main": "mcp_server.py",
+  "scripts": {
+    "start": "python mcp_server.py",
+    "dev": "python -m uvicorn mcp_server:app --reload --host 0.0.0.0 --port 8001",
+    "test": "python -m pytest tests/",
+    "install": "pip install -r mcp-requirements.txt"
+  },
+  "mcp": {
+    "server": {
+      "command": "python",
+      "args": ["mcp_server.py"],
+      "env": {
+        "SATELLITE_API_KEY": "demo_key",
+        "SATELLITE_SECRET": "demo_secret",
+        "UPDATE_INTERVAL": "30",
+        "DASHBOARD_WEBHOOK": ""
+      }
+    },
+    "tools": [
+      {
+        "name": "trigger_satellite_processing",
+        "description": "Download and process satellite imagery for field analysis",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "field_id": {
+              "type": "string",
+              "description": "Unique identifier for the field to process"
+            },
+            "force_download": {
+              "type": "boolean",
+              "description": "Force new satellite image download",
+              "default": false
+            }
+          },
+          "required": ["field_id"]
+        }
+      },
+      {
+        "name": "classify_growth_stage",
+        "description": "Trigger ML classification of potato crop growth stage",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "field_id": {
+              "type": "string",
+              "description": "Field identifier for growth stage classification"
+            }
+          },
+          "required": ["field_id"]
+        }
+      },
+      {
+        "name": "predict_nutrient_levels",
+        "description": "Predict soil nutrient levels using ML regression models",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "field_id": {
+              "type": "string",
+              "description": "Field identifier for nutrient prediction"
+            },
+            "nutrient": {
+              "type": "string",
+              "enum": ["nitrogen", "phosphorus", "potassium"],
+              "description": "Target nutrient for prediction",
+              "default": "nitrogen"
+            }
+          },
+          "required": ["field_id"]
+        }
+      },
+      {
+        "name": "generate_recommendations",
+        "description": "Generate AI-powered zone-wise agricultural recommendations",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "field_id": {
+              "type": "string",
+              "description": "Field identifier for recommendation generation"
+            }
+          },
+          "required": ["field_id"]
+        }
+      },
+      {
+        "name": "update_dashboard",
+        "description": "Trigger real-time dashboard updates with latest field data",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "field_id": {
+              "type": "string",
+              "description": "Field to update, or 'all' for all fields",
+              "default": "all"
+            }
+          }
+        }
+      },
+      {
+        "name": "schedule_weekly_processing",
+        "description": "Set up automated weekly satellite processing schedule",
+        "inputSchema": {
+          "type": "object",
+          "properties": {}
+        }
+      }
+    ]
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "agriculture",
+    "machine-learning",
+    "satellite-imagery",
+    "potato-crop",
+    "ai-recommendations",
+    "precision-agriculture"
+  ],
+  "author": "VIT Hackathon Team",
+  "license": "MIT",
+  "dependencies": {
+    "mcp": ">=1.0.0",
+    "fastmcp": ">=0.3.0",
+    "pydantic": ">=2.0.0",
+    "uvicorn": ">=0.23.0",
+    "websockets": ">=11.0.0",
+    "schedule": ">=1.2.0",
+    "aiohttp": ">=3.8.0",
+    "numpy": ">=1.21.0",
+    "pandas": ">=1.3.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vit-hackathon/potato-crop-ai"
+  },
+  "bugs": {
+    "url": "https://github.com/vit-hackathon/potato-crop-ai/issues"
+  },
+  "homepage": "https://github.com/vit-hackathon/potato-crop-ai#readme"
+}

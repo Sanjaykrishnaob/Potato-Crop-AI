@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coordinate Input Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .input-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input {
+            width: 200px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .result {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+            white-space: pre-wrap;
+        }
+        .error {
+            background-color: #ffebee;
+            color: #c62828;
+        }
+        .success {
+            background-color: #e8f5e8;
+            color: #2e7d32;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🌍 Potato Crop AI - Coordinate Input Test</h1>
+        <p>Test the new latitude/longitude input feature for specific area analysis.</p>
+        
+        <div class="input-group">
+            <label for="latitude">Latitude:</label>
+            <input type="number" id="latitude" step="0.000001" placeholder="e.g., 40.7128" value="40.7128">
+            
+            <label for="longitude">Longitude:</label>
+            <input type="number" id="longitude" step="0.000001" placeholder="e.g., -74.0060" value="-74.0060">
+        </div>
+        
+        <div class="input-group">
+            <button onclick="validateCoordinates()">Validate Coordinates</button>
+            <button onclick="analyzeField()">Analyze Field at Location</button>
+            <button onclick="useCurrentLocation()">Use Current Location</button>
+        </div>
+        
+        <div id="result" class="result" style="display: none;"></div>
+        
+        <h3>Pre-filled Examples:</h3>
+        <ul>
+            <li><a href="#" onclick="setCoordinates(40.7128, -74.0060)">New York, NY (40.7128, -74.0060)</a></li>
+            <li><a href="#" onclick="setCoordinates(28.6139, 77.2090)">New Delhi, India (28.6139, 77.2090)</a></li>
+            <li><a href="#" onclick="setCoordinates(51.5074, -0.1278)">London, UK (51.5074, -0.1278)</a></li>
+            <li><a href="#" onclick="setCoordinates(-23.5505, -46.6333)">São Paulo, Brazil (-23.5505, -46.6333)</a></li>
+            <li><a href="#" onclick="setCoordinates(35.6762, 139.6503)">Tokyo, Japan (35.6762, 139.6503)</a></li>
+        </ul>
+    </div>
+
+    <script>
+        const API_BASE = 'http://localhost:8000/api';
+        
+        function setCoordinates(lat, lng) {
+            document.getElementById('latitude').value = lat;
+            document.getElementById('longitude').value = lng;
+        }
+        
+        function showResult(data, isError = false) {
+            const resultDiv = document.getElementById('result');
+            resultDiv.style.display = 'block';
+            resultDiv.className = `result ${isError ? 'error' : 'success'}`;
+            resultDiv.textContent = JSON.stringify(data, null, 2);
+        }
+        
+        async function validateCoordinates() {
+            const lat = parseFloat(document.getElementById('latitude').value);
+            const lng = parseFloat(document.getElementById('longitude').value);
+            
+            if (isNaN(lat) || isNaN(lng)) {
+                showResult({ error: 'Please enter valid numeric coordinates' }, true);
+                return;
+            }
+            
+            try {
+                const response = await fetch(`${API_BASE}/validate-coordinates`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        latitude: lat,
+                        longitude: lng
+                    })
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok) {
+                    showResult(data);
+                } else {
+                    showResult(data, true);
+                }
+            } catch (error) {
+                showResult({ error: `Network error: ${error.message}` }, true);
+            }
+        }
+        
+        async function analyzeField() {
+            const lat = parseFloat(document.getElementById('latitude').value);
+            const lng = parseFloat(document.getElementById('longitude').value);
+            
+            if (isNaN(lat) || isNaN(lng)) {
+                showResult({ error: 'Please enter valid numeric coordinates' }, true);
+                return;
+            }
+            
+            try {
+                const response = await fetch(`${API_BASE}/field-analysis`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        fieldId: `custom-field-${lat}-${lng}`,
+                        latitude: lat,
+                        longitude: lng,
+                        useCustomLocation: true,
+                        coordinates: [lat, lng],
+                        startDate: '2024-01-01',
+                        endDate: '2024-12-31',
+                        analysisType: 'comprehensive'
+                    })
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok) {
+                    showResult(data);
+                } else {
+                    showResult(data, true);
+                }
+            } catch (error) {
+                showResult({ error: `Network error: ${error.message}` }, true);
+            }
+        }
+        
+        function useCurrentLocation() {
+            if (!navigator.geolocation) {
+                showResult({ error: 'Geolocation is not supported by this browser' }, true);
+                return;
+            }
+            
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    const lat = position.coords.latitude.toFixed(6);
+                    const lng = position.coords.longitude.toFixed(6);
+                    setCoordinates(lat, lng);
+                    showResult({
+                        message: 'Current location set successfully',
+                        latitude: lat,
+                        longitude: lng,
+                        accuracy: position.coords.accuracy + ' meters'
+                    });
+                },
+                (error) => {
+                    showResult({ error: `Geolocation error: ${error.message}` }, true);
+                }
+            );
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+{
+  "short_name": "Potato Crop AI",
+  "name": "AI-Powered Potato Crop Management System",
+  "description": "VIT Hackathon - Advanced Agricultural Intelligence for Potato Crop Growth Stage & Nutrient Health Management",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "logo192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "logo512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#2E8B57",
+  "background_color": "#F8FAF8",
+  "categories": ["agriculture", "productivity", "utilities"],
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "shortcuts": [
+    {
+      "name": "Quick Field Check",
+      "short_name": "Fields",
+      "description": "Quickly check field health status",
+      "url": "./fields",
+      "icons": [
+        {
+          "src": "logo192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Emergency Alerts",
+      "short_name": "Alerts",
+      "description": "View critical alerts and notifications",
+      "url": "./notifications",
+      "icons": [
+        {
+          "src": "logo192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    }
+  ],
+  "prefer_related_applications": false,
+  "launch_handler": {
+    "client_mode": "navigate-existing"
+  },
+  "edge_side_panel": {
+    "preferred_width": 480
+  }
+}
