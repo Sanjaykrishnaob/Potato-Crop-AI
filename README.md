@@ -132,7 +132,8 @@ potato-crop-ai/
 - Marketplace integration for optimal selling times
 
 ## 
-Developed for VIT Datasprint Hackathon 2025
+Developed for VIT Datasprint Hackathon 2025 by Project Pals
+Role - Team Lead
 
 ## 📄 License
 MIT License - See LICENSE file for details
