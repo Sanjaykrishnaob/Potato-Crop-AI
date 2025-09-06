@@ -90,9 +90,9 @@ celery -A src.tasks worker --loglevel=info
 - **Nitrogen Level Prediction**: R² = 0.89
 - **Yield Prediction**: RMSE < 8% of actual yield
 
-## 🎯 Hackathon Features Highlights
+## 🎯 Features Highlights
 
-### Demo-Ready Components
+### Components
 1. **Live Satellite Data Processing**: Real Sentinel-2 integration
 2. **Interactive Field Maps**: Click-and-analyze functionality
 3. **AI Recommendations**: Dynamic, context-aware suggestions
