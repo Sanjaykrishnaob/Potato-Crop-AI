@@ -1,16 +1,16 @@
-# 🥔 AI-Powered Potato Crop Growth Stage & Nutrient Health Management
+#  AI-Powered Potato Crop Growth Stage & Nutrient Health Management
 
-## 🌟 Overview
+##  Overview
 An intelligent agriculture solution that uses satellite imagery and AI to monitor potato crop growth stages, assess nutrient health, and provide precision recommendations for irrigation and fertilization.
 
-## 🚀 Features
+##  Features
 
-### 🛰️ Satellite Imagery Analysis
+### 🛰 Satellite Imagery Analysis
 - **Sentinel-2 Integration**: Automated processing of high-resolution satellite imagery
 - **NDVI/NDRE Indices**: Real-t ime vegetation health monitoring
 - **Multi-temporal Analysis**: Track changes over growing seasons
 
-### 🧠 AI-Powered Classification
+###  AI-Powered Classification
 - **Growth Stage Detection**: CNN-based classification of potato growth stages
   - Emergence Stage
   - Vegetative Growth
@@ -20,19 +20,19 @@ An intelligent agriculture solution that uses satellite imagery and AI to monito
 - **Nutrient Prediction**: Machine learning models for nitrogen level assessment
 - **Anomaly Detection**: Early identification of crop stress indicators
 
-### 📊 Smart Recommendations
+###  Smart Recommendations
 - **Zone-wise Analysis**: Field segmentation for targeted interventions
 - **Stage-specific Guidance**: Customized recommendations based on growth phase
 - **Resource Optimization**: Cost-effective irrigation and fertilization schedules
 - **Yield Prediction**: Forecasting based on current conditions
 
-### 🌐 Interactive Dashboard
+###  Interactive Dashboard
 - **Real-time Monitoring**: Live satellite data visualization
 - **Mobile-responsive Design**: Field-accessible interface for farmers
 - **Alert System**: Automated notifications for critical conditions
 - **Historical Analytics**: Track performance over multiple seasons
 
-## 🛠️ Technical Architecture
+## 🛠 Technical Architecture
 
 ### Data Processing Pipeline
 ```
@@ -46,13 +46,13 @@ Sentinel-2 Imagery → Preprocessing → Feature Extraction → ML Models → Re
 - **Frontend**: React, Leaflet, Chart.js
 - **Infrastructure**: Docker, Redis, Celery
 
-## 📋 Prerequisites
+##  Prerequisites
 - Python 3.8+
 - Node.js 14+
 - PostgreSQL 12+
 - Redis
 
-## 🚀 Quick Start
+##  Quick Start
 
 ### 1. Clone and Setup
 ```bash
@@ -85,12 +85,12 @@ cd web_dashboard && npm start
 celery -A src.tasks worker --loglevel=info
 ```
 
-## 📈 Model Performance
+##  Model Performance
 - **Growth Stage Classification**: 94.2% accuracy
 - **Nitrogen Level Prediction**: R² = 0.89
 - **Yield Prediction**: RMSE < 8% of actual yield
 
-## 🎯 Features Highlights
+##  Features Highlights
 
 ### Components
 1. **Live Satellite Data Processing**: Real Sentinel-2 integration
@@ -105,7 +105,7 @@ celery -A src.tasks worker --loglevel=info
 - **Economic Optimization**: Balances yield improvement with cost efficiency
 - **Scalable Architecture**: Designed for deployment across multiple farms
 
-## 📊 Project Structure
+##  Project Structure
 ```
 potato-crop-ai/
 ├── src/
@@ -118,13 +118,13 @@ potato-crop-ai/
 ├── data/                   # Sample datasets
 └── config/                 # Configuration files
 ```
-## 📱 Mobile Features
+##  Mobile Features
 - Offline capability for field use
 - GPS integration for precise location tracking
 - Camera integration for ground-truth validation
 - Push notifications for urgent alerts
 
-## 🔮 Future Enhancements
+##  Future Enhancements
 - Integration with IoT sensors
 - Blockchain-based supply chain tracking
 - Carbon footprint monitoring
@@ -135,9 +135,3 @@ potato-crop-ai/
 Developed for VIT Datasprint Hackathon 2025 by Project Pals
 
 Role - Team Lead
-
-## 📄 License
-MIT License - See LICENSE file for details
-
----
-*Revolutionizing agriculture through AI and satellite technology* 🌱
